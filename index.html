@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Klasifikasi Naive Bayes</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <h1>Klasifikasi Naive Bayes</h1>
+    <form>
+      <label>Masukkan IPK:</label>
+      <input type="text" id="ipk" name="ipk" required />
+      <br />
+      <label>Masukkan TAK:</label>
+      <input type="text" id="tak" name="tak" required />
+      <br />
+      <label>Masukkan status SKS:</label>
+      <select id="sks" name="sks" required>
+        <option value="BELUM MEMENUHI SYARAT">BELUM MEMENUHI SYARAT</option>
+        <option value="TELAH MEMENUHI SYARAT">TELAH MEMENUHI SYARAT</option>
+      </select>
+      <br />
+      <input type="button" value="Hitung" onclick="hitung()" />
+    </form>
+    <br />
+    <div id="hasil"></div>
+
+    <script>
+      function hitung() {
+        // mengambil nilai dari inputan
+        var ipk = document.getElementById("ipk").value;
+        var tak = document.getElementById("tak").value;
+        var sks = document.getElementById("sks").value;
+
+        // mengubah kategori menjadi numerik
+        if (sks == "BELUM MEMENUHI SYARAT") {
+          sks = 0;
+        } else {
+          sks = 1;
+        }
+
+        // melakukan prediksi
+        var hasil = "";
+        if (ipk > 2.5 && tak > 30 && sks == 1) {
+          hasil = "Tepat Waktu";
+        } else {
+          hasil = "Tertunda";
+        }
+
+        // menampilkan hasil prediksi
+        document.getElementById("hasil").innerHTML = "Hasil prediksi: " + hasil;
+      }
+    </script>
+  </body>
+</html>
