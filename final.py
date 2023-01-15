@@ -17,6 +17,7 @@ def index():
 @app.route('/predict', methods=['POST'])
 def predict():
     # mengambil nilai dari inputan
+    nama = str(request.form['nama'])
     ipk = float(request.form['ipk'])
     tak = int(request.form['tak'])
     sks = request.form['sks']
